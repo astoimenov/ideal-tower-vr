@@ -7,7 +7,7 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "IdealTower",
-  "start_url": "https://astoimenov.github.io/ideal-tower-vr/",
+  "start_url": "https://127.0.0.1:8000/",
   "theme_color": "#ffffff",
   "categories": ["entertainment"],
   "screenshots": [

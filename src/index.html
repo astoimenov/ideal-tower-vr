@@ -12,17 +12,17 @@
     <link rel="icon" href="./favicon.ico" />
     <link href="./manifest.json" rel="manifest" />
 
-    <link rel="stylesheet" href="./src/css/app.css" />
+    <link rel="stylesheet" href="./css/app.css" />
 
-    <script src="./build/vendor.js"></script>
+    <script src="./vendor.js"></script>
 
-    <script src="./src/js/state.js"></script>
-    <script src="./src/js/components/changeTo360.js"></script>
+    <script src="./js/state.js"></script>
+    <script src="./js/components/changeTo360.js"></script>
 
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-          .register("./sw.js", { scope: "./" })
+          .register("./sw.js")
           .then(function (registration) {
             console.log("Service Worker Registered");
           })
@@ -44,69 +44,121 @@
     >
       <a-assets>
         <video
+          crossorigin="anonymous"
           id="cinema-blackout"
-          src="src/assets/video/cinema-blackout-whole.mp4"
+          src="assets/video/cinema-blackout-whole.mp4"
         ></video>
         <video
+          crossorigin="anonymous"
           id="presentation-1"
-          src="src/assets/video/presentation-1.mp4"
+          src="assets/video/presentation-1.mp4"
         ></video>
         <video
+          crossorigin="anonymous"
           id="presentation-2"
-          src="src/assets/video/presentation-2.mp4"
+          src="assets/video/presentation-2.mp4"
         ></video>
         <video
+          crossorigin="anonymous"
           id="presentation-3"
-          src="src/assets/video/presentation-3.mp4"
+          src="assets/video/presentation-3.mp4"
         ></video>
         <video
+          crossorigin="anonymous"
           id="presentation-4"
-          src="src/assets/video/presentation-4.mp4"
+          src="assets/video/presentation-4.mp4"
         ></video>
         <video
+          crossorigin="anonymous"
           id="presentation-5"
-          src="src/assets/video/presentation-5.mp4"
+          src="assets/video/presentation-5.mp4"
         ></video>
 
-        <img id="lobby" src="src/assets/images/lobby-360.jpg" />
-        <img id="market" src="src/assets/images/market-360.jpg" />
-        <img id="money-shot" src="src/assets/images/money-shot-360.jpg" />
-        <img id="office" src="src/assets/images/office-360.jpg" />
+        <img id="lobby" src="assets/images/lobby-360.jpg" />
+        <img id="market" src="assets/images/market-360.jpg" />
+        <img id="money-shot" src="assets/images/money-shot-360.jpg" />
+        <img id="office" src="assets/images/office-360.jpg" />
 
-        <img id="landing" src="src/assets/images/landing.png" />
-        <img id="logo" src="src/assets/images/logo.png" />
+        <img id="landing" src="assets/images/landing.png" />
+        <img id="logo" src="assets/images/logo.png" />
 
-        <img id="next-btn" src="src/assets/images/next-btn.png" />
-        <img id="next-btn-hover" src="src/assets/images/next-btn-hover.png" />
+        <img id="next-btn" src="assets/images/next-btn.png" />
+        <img id="next-btn-hover" src="assets/images/next-btn-hover.png" />
 
-        <img id="audio-on-btn" src="src/assets/images/audio-on-btn.png" />
+        <img id="audio-on-btn" src="assets/images/audio-on-btn.png" />
         <img
           id="audio-on-btn-hover"
-          src="src/assets/images/audio-on-btn-hover.png"
+          src="assets/images/audio-on-btn-hover.png"
         />
-        <img id="audio-off-btn" src="src/assets/images/audio-off-btn.png" />
+        <img id="audio-off-btn" src="assets/images/audio-off-btn.png" />
         <img
           id="audio-off-btn-hover"
-          src="src/assets/images/audio-off-btn-hover.png"
+          src="assets/images/audio-off-btn-hover.png"
         />
-        <img id="start-btn" src="src/assets/images/start-btn.png" />
-        <img id="start-btn-hover" src="src/assets/images/start-btn-hover.png" />
+        <img id="start-btn" src="assets/images/start-btn.png" />
+        <img id="start-btn-hover" src="assets/images/start-btn-hover.png" />
 
         <audio
+          crossorigin="anonymous"
           id="background-audio"
-          src="src/assets/audio/background-audio.wav"
+          src="assets/audio/background-audio.wav"
           preload="auto"
         ></audio>
 
-        <audio id="vo-1" src="src/assets/audio/vo-1.wav" preload="auto"></audio>
-        <audio id="vo-2" src="src/assets/audio/vo-2.wav" preload="auto"></audio>
-        <audio id="vo-3" src="src/assets/audio/vo-3.wav" preload="auto"></audio>
-        <audio id="vo-4" src="src/assets/audio/vo-4.wav" preload="auto"></audio>
-        <audio id="vo-5" src="src/assets/audio/vo-5.wav" preload="auto"></audio>
-        <audio id="vo-6" src="src/assets/audio/vo-6.wav" preload="auto"></audio>
-        <audio id="vo-7" src="src/assets/audio/vo-7.wav" preload="auto"></audio>
-        <audio id="vo-8" src="src/assets/audio/vo-8.wav" preload="auto"></audio>
-        <audio id="vo-9" src="src/assets/audio/vo-9.wav" preload="auto"></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-1"
+          src="assets/audio/vo-1.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-2"
+          src="assets/audio/vo-2.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-3"
+          src="assets/audio/vo-3.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-4"
+          src="assets/audio/vo-4.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-5"
+          src="assets/audio/vo-5.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-6"
+          src="assets/audio/vo-6.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-7"
+          src="assets/audio/vo-7.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-8"
+          src="assets/audio/vo-8.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          crossorigin="anonymous"
+          id="vo-9"
+          src="assets/audio/vo-9.wav"
+          preload="auto"
+        ></audio>
 
         <script id="initial-logo" type="text/html">
           <a-entity
@@ -247,7 +299,7 @@
       "
     >
       <a id="myEnterARButton" href="#">
-        <img width="200" src="./src/assets/images/app-icon.png" />
+        <img width="200" src="./assets/images/app-icon.png" />
       </a>
     </div>
   </body>
