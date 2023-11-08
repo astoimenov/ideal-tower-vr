@@ -38,3 +38,15 @@ registerRoute(
     },
   })
 );
+
+registerRoute(
+  (route) => route.url.origin === "https://cdn.aframe.io",
+  new CacheFirst({
+    cacheName: `${cacheNames.prefix}-aframe-cdn-${cacheNames.suffix}`,
+    plugins: [new CacheableResponsePlugin({ statuses: [200] })],
+    matchOptions: {
+      ignoreSearch: true,
+      ignoreVary: true,
+    },
+  })
+);
