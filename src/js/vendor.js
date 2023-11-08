@@ -5,5 +5,3 @@ require("aframe-state-component");
 require("aframe-proxy-event-component");
 require("aframe-haptics-component");
 require("aframe-ar");
-
-require("./sw.js");
