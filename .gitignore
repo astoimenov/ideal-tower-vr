@@ -5,4 +5,4 @@
 .DS_Store
 /ovr-platform-util-pwa
 sw.*
-workbox-*
+/src/js/workbox-*
