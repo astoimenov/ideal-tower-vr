@@ -4,5 +4,4 @@
 /build/
 .DS_Store
 /ovr-platform-util-pwa
-sw.*
 /src/js/workbox-*
