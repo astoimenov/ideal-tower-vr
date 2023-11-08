@@ -37,7 +37,7 @@ AFRAME.registerState({
     hasVoiceOver: true,
     audioButtonPosition: positionBack,
     voStep: 0,
-    voSettings: "src: #vo-0; autoplay: true",
+    voSettings: "src: #vo-0; autoplay: true; positional: false",
     cinemaScr: "#cinema-blackout",
   },
 
@@ -59,6 +59,9 @@ AFRAME.registerState({
     },
     reverseCinema: function (state) {
       state.cinemaScr = "#cinema-blackout-reverse";
+    },
+    exitVR: function () {
+      document.querySelector("a-scene").exitVR();
     },
   },
   computeState: function (...args) {

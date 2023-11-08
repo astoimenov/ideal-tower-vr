@@ -97,6 +97,8 @@
         />
         <img id="start-btn" src="assets/images/start-btn.png" />
         <img id="start-btn-hover" src="assets/images/start-btn-hover.png" />
+        <img id="close-btn" src="assets/images/close-btn.png" />
+        <img id="close-btn-hover" src="assets/images/close-btn-hover.png" />
 
         <audio
           crossorigin="anonymous"
@@ -178,6 +180,17 @@
           <a-entity
             class="link nav-buttons"
             data-raycastable
+            geometry="primitive: plane; height: 0.1; width: 0.1"
+            material="shader: flat; transparent: true; src: #close-btn;"
+            event-set__mouseenter="material.src: #close-btn-hover"
+            event-set__mouseleave="material.src: #close-btn"
+            position="0.4 1.2 -0.56"
+            proxy-event="event: click; to: a-scene; as: exitVR"
+          ></a-entity>
+
+          <a-entity
+            class="link nav-buttons"
+            data-raycastable
             geometry="primitive: plane; height: 0.16; width: 0.5"
             material="shader: flat; transparent: true; src: #audio-off-btn;"
             event-set__mouseenter="material.src: #audio-off-btn-hover"
@@ -254,7 +267,7 @@
       <a-entity
         id="main-scene"
         template="src: #initial-logo"
-        sound="src: #background-audio; loop: true; autoplay: false; volume: 0.15;"
+        sound="src: #background-audio; loop: true; autoplay: false; volume: 0.15; positional: false"
       ></a-entity>
 
       <a-entity bind__sound="voSettings"></a-entity>
