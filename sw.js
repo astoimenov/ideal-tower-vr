@@ -4,14 +4,6 @@ const cacheFiles = [
     url: "./build/vendor.js",
     revision: "d5368396e898c4599aaaf43e1db6f72b",
   },
-  {
-    url: "./build/workbox-0858eadd.js",
-    revision: "8d0d745db914a1b685ac22f76c66a6ad",
-  },
-  {
-    url: "./build/workbox-2b403519.js",
-    revision: "1ec82034cd840c65751dbbeee9d7f921",
-  },
   { url: "./favicon.ico", revision: "c18300a2e402f72063384c4cedec4db1" },
   {
     url: "./icons/android/android-launchericon-144-144.png",
@@ -468,15 +460,6 @@ const cacheFiles = [
   { url: "./index.html", revision: "9ee0cd733dd75dd015da61cfd45fa720" },
   { url: "./manifest.json", revision: "b8b1564ce4edb20a3248b60c33c60b3e" },
   {
-    url: "./package-lock.json",
-    revision: "6b948fbe1ef59bbf2e3fa3e44ad12984",
-  },
-  { url: "./package.json", revision: "b07263e758918bff209a3ea2e6a80c0c" },
-  {
-    url: "./pwabuilder-sw.js",
-    revision: "e1e58ba8d095cda3239e0110ad58185a",
-  },
-  {
     url: "./src/assets/audio/background-audio.wav",
     revision: "110444485a598eb36065640527126390",
   },
@@ -635,14 +618,6 @@ const cacheFiles = [
   {
     url: "./src/js/state.js",
     revision: "0d4fbc79e3e0defadc826bdc43a66e26",
-  },
-  {
-    url: "./src/js/vendor.js",
-    revision: "799d1ea8c637b3bd150a387e4b997134",
-  },
-  {
-    url: "./workbox-config.js",
-    revision: "5af2ad52c85da9813e0737be896a08e7",
   },
 ];
 
