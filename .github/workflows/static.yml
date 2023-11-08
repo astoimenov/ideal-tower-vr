@@ -34,7 +34,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: "20.x"
       - run: npm ci
       - run: npm run build
       - name: Setup Pages
@@ -42,8 +42,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
-          path: '.'
+          path: |
+            .
+            !./node_modules
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
