@@ -4,7 +4,7 @@
   "description": "A VR web app showcasing the Ideal Tower",
   "main": "index.js",
   "scripts": {
-    "build": "browserify src/js/vendor.js | uglifyjs > build/vendor.js"
+    "build": "webpack"
   },
   "author": "Alex Stoimenov <astoimenov@despark.com>",
   "license": "ISC",
