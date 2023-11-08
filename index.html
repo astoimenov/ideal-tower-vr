@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ideal Tower • VR Experience</title>
+    <meta name="description" content="Ideal Tower • VR Experience" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+    />
+    <link rel="icon" href="./favicon.ico" />
+    <link href="/manifest.json" rel="manifest" />
+
+    <link rel="stylesheet" href="./src/css/app.css" />
+
+    <script src="./build/vendor.js"></script>
+
+    <script src="./src/js/state.js"></script>
+    <script src="./src/js/components/changeTo360.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./sw.js", { scope: "./" })
+          .then(function (registration) {
+            console.log("Service Worker Registered");
+          })
+          .catch(function (err) {
+            console.log("Service Worker Failed to Register", err);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <a-scene
+      auto-enter-vr="display: all"
+      cursor="rayOrigin: mouse"
+      raycaster="objects: .link"
+      renderer="antialias: true; highRefreshRate: true; logarithmicDepthBuffer: true; colorManagement: true;"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      vr-mode-ui="enterARButton: #myEnterARButton;"
+    >
+      <a-assets>
+        <video
+          id="cinema-blackout"
+          src="src/assets/video/cinema-blackout-whole.mp4"
+        ></video>
+        <video
+          id="presentation-1"
+          src="src/assets/video/presentation-1.mp4"
+        ></video>
+        <video
+          id="presentation-2"
+          src="src/assets/video/presentation-2.mp4"
+        ></video>
+        <video
+          id="presentation-3"
+          src="src/assets/video/presentation-3.mp4"
+        ></video>
+        <video
+          id="presentation-4"
+          src="src/assets/video/presentation-4.mp4"
+        ></video>
+        <video
+          id="presentation-5"
+          src="src/assets/video/presentation-5.mp4"
+        ></video>
+
+        <img id="lobby" src="src/assets/images/lobby-360.jpg" />
+        <img id="market" src="src/assets/images/market-360.jpg" />
+        <img id="money-shot" src="src/assets/images/money-shot-360.jpg" />
+        <img id="office" src="src/assets/images/office-360.jpg" />
+
+        <img id="landing" src="src/assets/images/landing.png" />
+        <img id="logo" src="src/assets/images/logo.png" />
+
+        <img id="next-btn" src="src/assets/images/next-btn.png" />
+        <img id="next-btn-hover" src="src/assets/images/next-btn-hover.png" />
+
+        <img id="audio-on-btn" src="src/assets/images/audio-on-btn.png" />
+        <img
+          id="audio-on-btn-hover"
+          src="src/assets/images/audio-on-btn-hover.png"
+        />
+        <img id="audio-off-btn" src="src/assets/images/audio-off-btn.png" />
+        <img
+          id="audio-off-btn-hover"
+          src="src/assets/images/audio-off-btn-hover.png"
+        />
+        <img id="start-btn" src="src/assets/images/start-btn.png" />
+        <img id="start-btn-hover" src="src/assets/images/start-btn-hover.png" />
+
+        <audio
+          id="background-audio"
+          src="src/assets/audio/background-audio.wav"
+          preload="auto"
+        ></audio>
+
+        <audio id="vo-1" src="src/assets/audio/vo-1.wav" preload="auto"></audio>
+        <audio id="vo-2" src="src/assets/audio/vo-2.wav" preload="auto"></audio>
+        <audio id="vo-3" src="src/assets/audio/vo-3.wav" preload="auto"></audio>
+        <audio id="vo-4" src="src/assets/audio/vo-4.wav" preload="auto"></audio>
+        <audio id="vo-5" src="src/assets/audio/vo-5.wav" preload="auto"></audio>
+        <audio id="vo-6" src="src/assets/audio/vo-6.wav" preload="auto"></audio>
+        <audio id="vo-7" src="src/assets/audio/vo-7.wav" preload="auto"></audio>
+        <audio id="vo-8" src="src/assets/audio/vo-8.wav" preload="auto"></audio>
+        <audio id="vo-9" src="src/assets/audio/vo-9.wav" preload="auto"></audio>
+
+        <script id="initial-logo" type="text/html">
+          <a-entity
+            data-raycastable
+            geometry="primitive: plane; height: 0.58; width: 1"
+            material="shader: flat; transparent: true; src: #landing;"
+            position="0 1.0 -0.6"
+          ></a-entity>
+
+          <a-entity
+            data-raycastable
+            geometry="primitive: plane; height: 0.12; width: 0.5"
+            material="shader: flat; transparent: true; src: #logo;"
+            position="0.15 1.045 -0.56"
+          ></a-entity>
+
+          <a-entity
+            class="link nav-buttons"
+            data-raycastable
+            geometry="primitive: plane; height: 0.16; width: 0.5"
+            material="shader: flat; transparent: true; src: #audio-off-btn;"
+            event-set__mouseenter="material.src: #audio-off-btn-hover"
+            event-set__mouseleave="material.src: #audio-off-btn"
+            position="0.25 0.6 -0.6"
+            proxy-event="event: click; to: a-scene; as: toggleAudio"
+            bind__visible="hasVoiceOver"
+          ></a-entity>
+
+          <a-entity
+            class="link nav-buttons"
+            data-raycastable
+            geometry="primitive: plane; height: 0.16; width: 0.5"
+            material="shader: flat; transparent: true; src: #audio-on-btn;"
+            event-set__mouseenter="material.src: #audio-on-btn-hover"
+            event-set__mouseleave="material.src: #audio-on-btn"
+            bind__position="audioButtonPosition"
+            proxy-event="event: click; to: a-scene; as: toggleAudio"
+            bind__visible="!hasVoiceOver"
+          ></a-entity>
+
+          <a-entity
+            class="link nav-buttons"
+            data-raycastable
+            geometry="primitive: plane; height: 0.16; width: 0.5"
+            material="shader: flat; transparent: true; src: #start-btn;"
+            event-set__mouseenter="material.src: #start-btn-hover"
+            event-set__mouseleave="material.src: #start-btn"
+            position="-0.25 0.6 -0.6"
+            proxy-event="event: click; to: a-scene; as: incrementStep"
+          ></a-entity>
+        </script>
+
+        <script id="cinema" type="text/html">
+          <a-curvedimage
+            change-to-360
+            bind__src="presentationSrc"
+            height="4.8"
+            radius="10"
+            theta-length="55"
+            theta-start="152.5"
+            position="0 2.1 0.99"
+            opacity="0"
+            id="curved-screen"
+            animation__fadein="property:material.opacity; startEvents: fadein; from: 0; to: 1; dur: 1000"
+            animation__fadeout="property:material.opacity; startEvents: fadeout; from: 1; to: 0; dur: 1000"
+          ></a-curvedimage>
+
+          <a-videosphere
+            src="#cinema-blackout"
+            rotation="0 270 0"
+            radius="50"
+            id="cinema-sphere"
+          ></a-videosphere>
+        </script>
+
+        <script id="vr-view" type="text/html">
+          <a-sky bind__src="vrViewSrc" rotation="0 270 0"></a-sky>
+
+          <a-entity
+            class="link"
+            data-raycastable
+            geometry="primitive: plane; height: 0.57; width: 1"
+            material="shader: flat; transparent: true; src: #next-btn-hover"
+            event-set__mouseenter="material.src: #next-btn"
+            event-set__mouseleave="material.src: #next-btn-hover"
+            bind__position="nextBtnPosition"
+            bind__rotation="nextBtnRotation"
+            proxy-event="event: click; to: a-scene; as: incrementStep"
+          ></a-entity>
+        </script>
+      </a-assets>
+
+      <a-entity
+        id="main-scene"
+        template="src: #initial-logo"
+        sound="src: #background-audio; loop: true; autoplay: false; volume: 0.15;"
+      ></a-entity>
+
+      <a-entity bind__sound="voSettings"></a-entity>
+
+      <a-sky
+        id="mask"
+        color="#fff"
+        opacity="0"
+        radius="2"
+        animation__fadeout="property:material.opacity; startEvents: fadeout; from: 0; to: 1; dur: 500"
+        animation__fadein="property:material.opacity; startEvents: fadein; from: 1; to: 0; dur: 500"
+      ></a-sky>
+
+      <a-entity
+        laser-controls="hand: left;"
+        raycaster="objects: .link"
+        haptics__trigger="events: mouseenter; dur: 50; force: 0.2"
+      ></a-entity>
+      <a-entity
+        laser-controls="hand: right;"
+        raycaster="objects: .link"
+        haptics__trigger="events: mouseenter; dur: 50; force: 0.2"
+      ></a-entity>
+
+      <a-entity
+        position="0 1.26 0.8"
+        camera="fov: 90;"
+        look-controls
+      ></a-entity>
+    </a-scene>
+
+    <div
+      style="
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <a id="myEnterARButton" href="#">
+        <img width="200" src="./src/assets/images/app-icon.png" />
+      </a>
+    </div>
+  </body>
+</html>
