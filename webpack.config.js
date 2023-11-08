@@ -18,8 +18,8 @@ module.exports = {
       maximumFileSizeToCacheInBytes: 500000000,
       swSrc: "./service-worker.js",
       modifyURLPrefix: {
-        "build/": "/",
-        "./build/": "/",
+        "build/": "./",
+        "./build/": "./",
       },
     }),
   ],
