@@ -2,7 +2,7 @@ import { CacheableResponsePlugin } from "workbox-cacheable-response";
 import { cacheNames } from "workbox-core";
 import { precacheAndRoute } from "workbox-precaching";
 import { RangeRequestsPlugin } from "workbox-range-requests";
-import { registerRoute, setDefaultHandler } from "workbox-routing";
+import { registerRoute } from "workbox-routing";
 import { CacheFirst } from "workbox-strategies";
 
 const allEntries = self.__WB_MANIFEST; // Injected by WorkboxWebpackPlugin at compile time
@@ -14,12 +14,11 @@ precacheAndRoute(restEntries);
 const videoCacheName = `${cacheNames.prefix}-videos-${cacheNames.suffix}`;
 
 self.addEventListener("install", (event) => {
-  console.log({ allEntries });
   const allVideosAddedToCache = caches
     .open(videoCacheName)
     .then((videoCache) => {
       const videoUrls = videoEntries.map((entry) => entry.url);
-      console.log({ videoUrls });
+
       return videoCache.addAll(videoUrls);
     });
   event.waitUntil(allVideosAddedToCache);
@@ -33,5 +32,9 @@ registerRoute(
       new CacheableResponsePlugin({ statuses: [200] }),
       new RangeRequestsPlugin(),
     ],
+    matchOptions: {
+      ignoreSearch: true,
+      ignoreVary: true,
+    },
   })
 );
